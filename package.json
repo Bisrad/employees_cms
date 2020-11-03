@@ -1,0 +1,30 @@
+{
+  "name": "employees_cms",
+  "version": "1.0.0",
+  "description": "employee cms",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bisrad/employee_cms.git"
+  },
+  "author": "Brad Thompson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bisrad/employee_cms/issues"
+  },
+  "homepage": "https://github.com/Bisrad/employee_cms#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "inquirer": "^7.3.3",
+    "mongoose": "^5.10.11",
+    "nodemon": "^2.0.6"
+  },
+  "nodemonConfig": {
+    "ext": "js,html"
+  }
+}
