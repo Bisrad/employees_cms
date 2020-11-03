@@ -1,12 +1,22 @@
 const http = require('http');
 const fs = require('fs');
+const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
-// const inquirer = require("inquirer");
 
+//call express and db user+pwd (secured)
+const app = express();
+require('dotenv/config');
+
+//routes
+// const mainRouter = require('./src/routes/main')
+
+// app.use('/', mainRouter);
+
+//link html to server
 function onRequest(req,res) {
    res.writeHead(200, {'Content-Type': 'text/html'});
-   fs.readFile('./public/index.html', null, function(err, data) {
+   fs.readFile('./src/views/main.ejs', 'Utf8', function(err, data) {
     if(err) {
         res.writeHead(404);
         res.write('File not found');
@@ -17,14 +27,16 @@ function onRequest(req,res) {
    });
 }
 
-//call express and db user+pwd
-const app = express();
-require('dotenv/config');
+// middleware // call static files
+app.use(express.static('public'))
+app.use('/css', express.static(__dirname, + 'public/css'))
+app.use('/js', express.static(__dirname, + 'public/js'))
 
-//routes
-app.get('/', (req,res) => {
-    res.send('We are on Home')
-});
+//set template engine 
+app.set('views', '.src/views')
+app.set('view engine', 'ejs')
+
+app.use(bodyParser.urlencoded({ extended : true }))
 
 //db connect
 mongoose.connect(
@@ -37,9 +49,6 @@ mongoose.connect(
     console.log(`DB Connection Error: ${err.message}`);
 });
 
-
-
 //listen for server 
-
 http.createServer(onRequest).listen(3000, '127.0.0.1');
 console.log('Yo! you are on port 3000');

@@ -1,0 +1,34 @@
+body {
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #f6f6f6;
+}
+
+img { max-width: 100%; }
+h2 { font-size: 1.6rem; }
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: #fff;
+    background-color: #10555A;
+    margin-bottom: 10px;
+
+    &__search {
+        input[type=text] {
+            padding: 6px;
+            border: none;
+        }
+
+        input[type=submit] {
+            float: right;
+            padding: 6px 10px;
+            border: none;
+            cursor: pointer;
+        }
+    }
+}
+
+.wrapper { padding: 0 1rem }
